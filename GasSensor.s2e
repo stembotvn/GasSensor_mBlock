@@ -1,0 +1,58 @@
+{
+  "extensionName": "Gas_Sensor",
+  "description": "Reading Gas in PPM - Arduino Mode Only",
+  "version": "1.0.1",
+  "author": "NEGENDO",
+  "homepage": "https://negendo.com/collections/maker-system",
+  "sort":0,
+  "javascriptURL":"js/GasSensor.js",
+    "firmware":"1.0",
+    "extensionPort":0,
+  "blockSpecs": [
+      
+  [
+    "R",
+    "Get Gas in Pin %d.pin  Type %d.type concentrate in PPM",
+    "getPPM",
+     "A0","GAS_LPG",
+      {
+        "inc" : "#include \"Gas.h\"\n",
+        "def" : "Gas gas;\n",
+        "setup" : "",
+        "work" : "gas.MQGetPPM({0},{1})",
+        "loop" : ""
+      }
+    ],
+
+  [
+    "w",
+    "Gas Sensor calibrate %d.pin",
+    "GasCalibrate",
+     "A0",
+      {
+        "inc" : "#include \"Gas.h\"\n",
+        "def" : "Gas gas;\n",
+        "setup" : "",
+        "work" : "gas.MQCalibration({0});\n",
+        "loop" : ""
+      }
+    ]
+  ],
+  "menus": {  
+    "pin":["A0","A1","A2","A3"],
+    "type":["GAS_LPG","GAS_CO","GAS_SMOKE"]
+  },
+  "values":{
+    "A0":14,
+		"A1":15,
+		"A2":16,
+		"A3":17,
+    "GAS_LPG":0,
+    "GAS_CO":1,
+    "GAS_SMOKE":2
+
+  },
+  "translators":{
+          
+  }
+}
